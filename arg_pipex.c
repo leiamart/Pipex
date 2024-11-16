@@ -6,10 +6,17 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:04:56 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/11 19:28:59 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/16 14:17:54 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+void	ft_files(t_arg *a)
+{
+if (access(a->file!, F_OK) !=0)
+{
+	ft_printf("Infile not found\n");
 
+}
+}
