@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/11 18:58:12 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:55:32 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@ CC = clang
 CFLAGS = -g -Wall -Wextra -Werror
 
 SOURCES = \
+arg_pipex.c\
+ft_child_process.c\
+ft_free.c\
+ft_printf.c\
+ft_split.c\
+ft_utils_printf.c\
+pipex.c\
+utils_pipex.c\
+pipex_utils.c\
+
 
 OBJECTS = $(SOURCES:.c=.o)
 

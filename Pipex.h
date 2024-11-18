@@ -6,11 +6,11 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:07:17 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/16 14:14:18 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:59:22 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	PIPEX_H
+#ifndef PIPEX_H
 # define PIPEX_H
 
 # include "unistd.h"
@@ -31,8 +31,20 @@ typedef struct s_args
 	int		fd2;
 }	t_args;
 
+void	ft_error(t_args *a, char *e);
+void	ft_child(t_args *a, int pfd[2], char **c);
+void    ft_infile(t_args *a);
+void    ft_outfile(t_args *a);
 
+size_t	ft_strlen(const char *s);
+size_t	ft_strlcat(char *dst, const char *src, size_t destsize);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 
+void	ft_files(t_arg *a);
+char	*ft_cmd(char *c, char *e);
 
+void    ft_initialize(t_args *a);
+void    ft_parse_arg(t_args *a, char **argv);
 
 #endif

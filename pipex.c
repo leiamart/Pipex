@@ -6,13 +6,58 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:01:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/11 19:02:50 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/18 21:02:56 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argv, char **argv, char **a)
+
+void	ft_pipex(t_arg *a, char **e)
 {
+pid_t	p;
+int	pfd[2];
+
+if(pipe(pfd) == -1)
+	ft_error(a, "pipe");
+if(dup2(a->fd1, STDIN_FILENO)==-1)
+	ft_error(a, "dup2");
+ft_child(a, pfd, e);
+if (dup2(a->fd2,STDOUT_FILENO)==-1)
+	ft_error(a "dup2");
+p = fork();
+if (p == -1)
+	ft_error(a, "fork");
+if (pid == 0)
+{
+if (execve(a->cmd2_path, a->command2, e) == -1)
+	ft_error(a, "execve");
+}
+else
+waitpid(p, NULL, 0);
+}
+
+int	main(int argc, char **argv, char **e)
+{
+	t_args	*a;
+
+	if (argc == 5)
+	{
+		a = malloc(sizeof(t_args));
+		if (!a)
+			ft_error(a, "malloc");
+		ft_parse_arg(a, argv);
+		*a = ft_arg(a, e);
+		ft_infile(a);
+		ft_outfile(a);
+		ft_pipex(a, e);
+		ft_free_arg(a);
+	}
+	else
+	{
+		ft_printf("Error: Incorrect number of arguments\n");
+		exit(EXIT_FAILURE);
+	}
+	return (0);
 
 }
