@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:23:01 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 21:29:47 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:50:56 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,11 @@ void	ft_child_cmd_bonus(t_args *a, char **e, int pfd)
 	if (p==-1)
 
 
+}
+
+void	ft_error_bonus(t_args *a, char *e)
+{
+	perror(e);
+	ft_free_arg_bonus(a);
+	exit(EXIT_FAILURE);
 }

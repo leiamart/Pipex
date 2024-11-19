@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:52:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 18:55:32 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:40:56 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,17 @@ pipex.c\
 utils_pipex.c\
 pipex_utils.c\
 
+SOURCES_BONUS = \
+ft_child_bonus.c\
+ft_fd_bonus.c\
+ft_free_bonus.c\
+ft_here_doc_bonus.c\
+utils_bonus.c\
+
 
 OBJECTS = $(SOURCES:.c=.o)
+
+OBJECTS_BONUS = $(SOURCES_BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -36,12 +45,17 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	   $(CC) -g $(FLAGS) $(OBJECTS) -o $(NAME)
 
+$(NAME_BONUS) : $(OBJECTS_BONUS)
+	$(CC) $(CFLAGS) $(OBJECTS_BONUS) -o $(NAME_BONUS)
+
+bonus: $(NAME_BONUS)
+
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(OBJECTS_BONUS)
 
 
 flcean: clean
-	rm -f $(NAME) 
+	rm -f $(NAME) $(NAME_BONUS)
 
 re: flcean all
 

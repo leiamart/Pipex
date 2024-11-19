@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:09:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 21:14:00 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/19 21:50:51 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,40 @@ void	ft_path_free(t_args *a)
 	}
 	a->cmd_path = aux;
 	ft_clear_list(&a->cmd_path);
+}
+
+void	*ft_free_b(char **str, int c)
+{
+	int i;
+
+	i = 0;
+	while (i < c)
+	{
+	free(str[i]);
+	i++;
+	}
+	free(str);
+	return (NULL);
+}
+
+void	*ft_free_arg_bonus(t_args *a)
+{
+	int		i;
+	t_cmd	*aux;
+
+	ft_clear_list(&a->cmd);
+	if (a->cmd_path)
+		ft_clear_list(&a->cmd_path);
+	while (a->command)
+	{
+		i = 0;
+		while (a->command->cmd[i])
+			i++;
+		ft_free_b(a->command->cmd, i);
+		aux = a->command->next;
+		free(a->command);
+		a->command = aux;
+	}
+	free(a);
+	return (NULL);
 }
