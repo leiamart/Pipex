@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:01:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 21:02:56 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/21 20:05:34 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 void	ft_pipex(t_arg *a, char **e)
 {
-pid_t	p;
-int	pfd[2];
-
-if(pipe(pfd) == -1)
-	ft_error(a, "pipe");
-if(dup2(a->fd1, STDIN_FILENO)==-1)
-	ft_error(a, "dup2");
+	pid_t	p;
+	int	pfd[2];
+	
+	if(pipe(pfd) == -1)
+		ft_error(a, "pipe");
+	if(dup2(a->fd1, STDIN_FILENO)==-1)
+		ft_error(a, "dup2");
 ft_child(a, pfd, e);
 if (dup2(a->fd2,STDOUT_FILENO)==-1)
 	ft_error(a "dup2");

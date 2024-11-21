@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:03:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/19 22:14:55 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/21 21:38:01 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,31 @@ void	ft_heredoc_init(int argc,t_args *a, char **argv)
 	a->cmd = f;
 }
 
+void	ft_heredoc(t_args *a, char **argv, int argc)
+{
+	int		fd;
+	char	*b;
 
+	ftheredoc_init(a, argv, argc);
+	fd = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (fd < 0)
+		ft_error_bonus(a, "open");
+	while (1)
+	{
+		ft_printf("heredoc> ");
+		b = get_next_line(STDIN_FILENO);
+		if (!ft_strncmp(a->limiter, b, ft_strlen(a->limiter))
+			&& ft_strlen(b) - 1 == ft_strlen(a->limiter))
+			break ;
+		write(fd, b, ft_strlen(b));
+		free(b);
+	}
+	free(b);
+	close(fd);
+	a->fd1 = open(".heredoc_tmp", O_RDONLY);
+	if (a->fd1 < 0)
+	{
+		unlink(".heredoc_tmp");
+		ft_error_bonus(a, "open");
+	}
+}
