@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:03:09 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 20:58:07 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:07:19 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_parse_arg(t_args *a, char **argv)
 		ft_error(a, "ft_strjoin");
 	a->command2 = ft_split(argv[i++], ' ');
 	if (!a->command2)
-		ft_error(args, "ft_split");
+		ft_error(a, "ft_split");
 	a->cmd2 = ft_strjoin("/", a->command2[0]);
 	if (!a->cmd2)
 		ft_error(a, "ft_strjoin");

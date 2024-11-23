@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:15:14 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/11 19:28:29 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:22:49 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,3 +101,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	p[c] = '\0';
 	return (p);
 }
+
+int     ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+        size_t  i;
+
+        i = 0;
+        while ((s1[i] == s2 [i]) && (s1[i] && s2[i] != '\0') && (i < n))
+                i++;
+        {
+                if (i != n)
+                        return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+                return (0);
+        }
+}
+

@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:18:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/16 16:03:17 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:03:58 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_free(char **str, int c)
 	i = 0;
 	while(i<c)
 	{
-	free(str[i])
+	free(str[i]);
 		i++;
 	}
 	free(str);
@@ -57,7 +57,7 @@ void	*ft_free_arg(t_args *a)
 	if (a->cmd2_path != NULL)
 		free(a->cmd2_path);
 	ft_free_cmd(a);
-	if (args != NULL)
+	if (a != NULL)
 		free(a);
 	return (NULL);
 

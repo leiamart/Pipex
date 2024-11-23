@@ -6,14 +6,14 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:01:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/21 20:05:34 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:36:00 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
 
-void	ft_pipex(t_arg *a, char **e)
+void	ft_pipex(t_args *a, char **e)
 {
 	pid_t	p;
 	int	pfd[2];
@@ -24,11 +24,11 @@ void	ft_pipex(t_arg *a, char **e)
 		ft_error(a, "dup2");
 ft_child(a, pfd, e);
 if (dup2(a->fd2,STDOUT_FILENO)==-1)
-	ft_error(a "dup2");
+	ft_error(a, "dup2");
 p = fork();
 if (p == -1)
 	ft_error(a, "fork");
-if (pid == 0)
+if (p == 0)
 {
 if (execve(a->cmd2_path, a->command2, e) == -1)
 	ft_error(a, "execve");
@@ -41,6 +41,8 @@ int	main(int argc, char **argv, char **e)
 {
 	t_args	*a;
 
+	if (e[0]==NULL)
+		return (0);
 	if (argc == 5)
 	{
 		a = malloc(sizeof(t_args));

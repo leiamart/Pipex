@@ -6,13 +6,13 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 19:04:56 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 20:33:38 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:21:33 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_files(t_arg *a)
+void	ft_files(t_args *a)
 {
 if (access(a->file1, F_OK) !=0)
 {
@@ -35,7 +35,7 @@ char	*ft_cmd(char *c, char *e)
 
 	i = 0;
 	str = ft_substr(e, 5, ft_strlen(e));
-	h = ft_split(str, ":");
+	h = ft_split(str, ':');
 	free(str);
 	while(h[i] != NULL)
 	{

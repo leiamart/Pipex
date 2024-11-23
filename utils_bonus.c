@@ -6,18 +6,18 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:08:46 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/21 21:25:24 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 15:55:54 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-t_cmd	*ft_new_cmd(char *c)
+t_command	*ft_new_cmd(char *c)
 {
-	t_cmd	*new;
+	t_command	*new;
 
 	new = NULL;
-	new = malloc(sizeof(t_cmd));
+	new = malloc(sizeof(t_command));
 	if (!new)
 		return (NULL);
 	if (new)
@@ -28,9 +28,9 @@ t_cmd	*ft_new_cmd(char *c)
 	return (new);
 }
 
-void    ft_add_back(t_cmd *n, t_cmd **l)
+void    ft_add_back(t_command *n, t_command **l)
 {
-        t_cmd   *b;
+        t_command   *b;
 
         b = *l;
         if (!b)

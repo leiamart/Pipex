@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:44:58 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/21 22:04:03 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:23:54 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ char	*ft_cmd_bonus(char *e, char *c)
 	char	**d;
 	char	*str;
 	int		i;
-	str = ft_substr(e, 5, ft_strlen(e));
-	d = ft_split(str, ':');
+	str = ft_substr_b(e, 5, ft_strlen_b(e));
+	d = ft_split_b(str, ':');
 	free(str);
 	i = 0;
 	while (d[i] != NULL)
 	{
-		str = ft_strjoin(d[i], c);
+		str = ft_strjoin_b(d[i], c);
 		if (access(str, F_OK | X_OK) == 0)
 			break ;
 		free(str);
@@ -97,7 +97,7 @@ t_args	check_args(t_args *a, char **e)
 	aux = a->cmd_path;
 	f = a->cmd;
 	i = 0;
-	while (ft_strncmp(e[i], "PATH=", 5) != 0)
+	while (ft_strncmp_b(e[i], "PATH=", 5) != 0)
 		i++;
 	ft_files_bonus(a);
 	while (f)

@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:05:09 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/18 20:50:29 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:02:40 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_error(t_args *a, char *e)
 {
 	perror(e);
-	free_args(a);
+	ft_free_arg(a);
 	exit(EXIT_FAILURE);
 }
 
@@ -29,7 +29,7 @@ void	ft_child(t_args *a, int pfd[2], char **c)
 	if (p == 0)
 	{
 		if (dup2(pfd[1], STDOUT_FILENO) == -1)
-			ft_error(args, "dup2");
+			ft_error(a, "dup2");
 		close(pfd[0]);
 		if (execve(a->cmd1_path, a->command1, c) == -1)
 			ft_error(a, "execve");
