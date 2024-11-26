@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 14:18:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/23 16:03:58 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:06:52 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ void	*ft_free(char **str, int c)
 	return (NULL);
 }
 
+void	ft_free_matrix(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
 void	ft_free_cmd(t_args *a)
 {
 	int 	i;
@@ -33,7 +46,7 @@ void	ft_free_cmd(t_args *a)
 	i = 0;
 	if(a->command1 != NULL)
 	{
-	while(a->command1[1])
+	while(a->command1[i])
 		i++;
 	ft_free(a->command1, i);
 	}

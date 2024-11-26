@@ -57,10 +57,10 @@ clean:
 	rm -f $(OBJECTS) $(OBJECTS_BONUS)
 
 
-flcean: clean
+fclean: clean
 	rm -f $(NAME) $(NAME_BONUS)
 
-re: flcean all
+re: fclean all
 
 .PHONY: all bonus clean fclean re
 

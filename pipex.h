@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:07:17 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/23 17:28:54 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/26 20:06:43 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char	*ft_cmd(char *c, char *e);
 t_args  ft_arg(t_args *a, char **e);
 
 void    *ft_free(char **str, int c);
+void	ft_free_matrix(char **str);
 void    ft_free_cmd(t_args *a);
 void    *ft_free_arg(t_args *a);
 
