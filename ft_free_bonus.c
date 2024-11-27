@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:09:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/19 21:50:51 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:44:30 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,18 @@ void	ft_clear_list(t_list **a)
 	*a = NULL;
 }
 
-void	ft_path_free(t_args *a)
+void	ft_path_free(t_arg *a)
 {
 	t_list	*aux;
 
-	aux = a->cmd_path;
-	while (a->cmd_path)
+	aux = a->cmdpath;
+	while (a->cmdpath)
 	{
-		free(a->cmd_path->content);
-		a->cmd_path = a->cmd_path->next;
+		free(a->cmdpath->content);
+		a->cmdpath = a->cmdpath->next;
 	}
-	a->cmd_path = aux;
-	ft_clear_list(&a->cmd_path);
+	a->cmdpath = aux;
+	ft_clear_list(&a->cmdpath);
 }
 
 void	*ft_free_b(char **str, int c)
@@ -56,14 +56,14 @@ void	*ft_free_b(char **str, int c)
 	return (NULL);
 }
 
-void	*ft_free_arg_bonus(t_args *a)
+void	*ft_free_arg_bonus(t_arg *a)
 {
 	int		i;
 	t_cmd	*aux;
 
 	ft_clear_list(&a->cmd);
-	if (a->cmd_path)
-		ft_clear_list(&a->cmd_path);
+	if (a->cmdpath)
+		ft_clear_list(&a->cmdpath);
 	while (a->command)
 	{
 		i = 0;

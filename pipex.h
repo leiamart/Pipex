@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:07:17 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/26 20:06:43 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/27 21:16:39 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_cmd
 {
 	char			**cmd;
 	struct s_cmd	*next;
-}	t_command;
+}	t_cmd;
 
 typedef struct s_args
 {
@@ -48,6 +48,25 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_args
+{
+	t_list	*cmd;
+	t_list	*cmdpath;
+	t_cmd	*command;
+	t_list	*firstcmd;
+	t_list	*firstpath;
+	t_cmd	*firstcomand;
+	char	*limit;
+	char	*file1;
+	char	*file2;
+	int	1fd;
+	int	2fd;
+	int	cmd_n;
+	int	index;
+	int	heredocflag;
+}	t_args_bonus;
+
 
 void	ft_error(t_args *a, char *e);
 void	ft_child(t_args *a, int pfd[2], char **c);
