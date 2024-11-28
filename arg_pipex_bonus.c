@@ -6,13 +6,13 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:44:58 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/23 17:23:54 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:17:30 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_error_arg_b(t_args *a, t_list *aux)
+void	ft_error_arg_b(t_arg *a, t_list *aux)
 {
 if (a->heredoc_flag == 1)
 		unlink(".heredoc_tmp");
@@ -62,7 +62,7 @@ void	ft_files_bonus(t_arg *a)
 	}
 }
 
-void	ft_start_arg(t_args *a, int argc, char **argv)
+void	ft_start_arg(t_arg *a, int argc, char **argv)
 {
 	int		i;
 	t_cmd	*aux_cmd;
@@ -78,23 +78,23 @@ void	ft_start_arg(t_args *a, int argc, char **argv)
 	{
 		aux_cmd = ft_new_cmd(argv[i++]);
 		ft_add_back(&a->command, aux_cmd);
-		aux = ft_lstnew(ft_strjoin("/", temp_cmd->cmd[0]));
+		aux = ft_lstnew(ft_strjoin("/", aux_cmd->cmd[0]));
 		if (!f)
 			f = aux;
 		ft_lstadd_back(&a->cmd, aux);
-		a->cmd_nbr++;
+		a->cmd_n++;
 	}
 	a->file2 = argv[i];
 	a->cmd = f;
 }
 
-t_args	check_args(t_args *a, char **e)
+t_arg	check_args(t_arg *a, char **e)
 {
 	t_list	*aux;
 	t_list	*f;
 	int		i;
 
-	aux = a->cmd_path;
+	aux = a->cmdpath;
 	f = a->cmd;
 	i = 0;
 	while (ft_strncmp_b(e[i], "PATH=", 5) != 0)
@@ -105,7 +105,7 @@ t_args	check_args(t_args *a, char **e)
 		aux = ft_lstnew(ft_cmd_bonus(f->content, e[i]));
 		if (aux->content == NULL)
 			ft_error_arg_b(a, aux);
-		ft_lstadd_back(&args->cmd_path, aux);
+		ft_lstadd_back(&a->cmdpath, aux);
 		f = f->next;
 	}
 	return (*a);

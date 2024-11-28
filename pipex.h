@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 20:07:17 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/27 21:16:39 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:49:19 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_cmd
 {
 	char			**cmd;
 	struct s_cmd	*next;
-}	t_cmd;
+}	t_command;
 
 typedef struct s_args
 {
@@ -49,23 +49,23 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct s_args
+typedef struct s_arg
 {
 	t_list	*cmd;
 	t_list	*cmdpath;
-	t_cmd	*command;
+	t_command	*command;
 	t_list	*firstcmd;
 	t_list	*firstpath;
-	t_cmd	*firstcomand;
+	t_command	*firstcomand;
 	char	*limit;
 	char	*file1;
 	char	*file2;
-	int	1fd;
-	int	2fd;
+	int	fd1;
+	int	fd2;
 	int	cmd_n;
 	int	index;
 	int	heredocflag;
-}	t_args_bonus;
+}	t_arg;
 
 
 void	ft_error(t_args *a, char *e);
@@ -101,9 +101,9 @@ void    *ft_free_arg(t_args *a);
 void    ft_initialize(t_args *a);
 void    ft_parse_arg(t_args *a, char **argv);
 
-void    ft_child_bonus(t_args *a, char **e);
-void    ft_child_cmd_bonus(t_args *a, char **e, int pfd);
-void    ft_error_bonus(t_args *a, char *e);
+void    ft_child_bonus(t_arg *a, char **e);
+void    ft_child_cmd_bonus(t_arg *a, char **e, int pfd);
+void    ft_error_bonus(t_arg *a, char *e);
 
 t_command   *ft_new_cmd(char *c);
 void    ft_add_back(t_command *n, t_command **l);
@@ -112,23 +112,23 @@ void    ft_lstadd_back(t_list **lst, t_list *new);
 int     ft_strcmp(const char *s1, const char *s2);
 
 void    ft_clear_list(t_list **a);
-void    ft_path_free(t_args *a);
+void    ft_path_free(t_arg *a);
 void    *ft_free_b(char **str, int c);
-void    *ft_free_arg_bonus(t_args *a);
+void    *ft_free_arg_bonus(t_arg *a);
 
 void    ft_infile_b(t_args *a);
-void    ft_outfile_heredoc(t_args *a);
-void    ft_outfile_b(t_args *a);
+void    ft_outfile_heredoc(t_arg *a);
+void    ft_outfile_b(t_arg *a);
 
-void    ft_initialize_bn(t_args *a);
-void    ft_heredoc_init(int argc,t_args *a, char **argv);
+void    ft_initialize_bn(t_arg *a);
+void    ft_heredoc_init(int argc,t_arg *a, char **argv);
 void    ft_heredoc(t_args *a, char **argv, int argc);
 
-void    ft_error_arg_b(t_args *a, t_list *aux);
+void    ft_error_arg_b(t_arg *a, t_list *aux);
 char    *ft_cmd_bonus(char *e, char *c);
-void    ft_files_bonus(t_args *a);
-void    ft_start_arg(t_args *a, int argc, char **argv);
-t_args  check_args(t_args *a, char **e);
+void    ft_files_bonus(t_arg *a);
+void    ft_start_arg(t_arg *a, int argc, char **argv);
+t_arg  check_args(t_arg *a, char **e);
 
 
 int     ft_strncmp_b(const char *s1, const char *s2, size_t n);

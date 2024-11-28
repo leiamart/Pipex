@@ -6,24 +6,24 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:03:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/21 21:38:01 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/28 22:40:40 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_initialize_bn(t_args *a)
+void	ft_initialize_bn(t_arg *a)
 {
 	a->cmd = NULL;
-	a->cmd_path = NULL;
+	a->cmdpath = NULL;
 	a->command = NULL;
-	a->first_cmd = NULL;
-	a->first_path = NULL;
-	a->first_command = NULL;
+	a->firstcmd = NULL;
+	a->firstpath = NULL;
+	a->firstcommand = NULL;
 	a->file1 = NULL;
 	a->file2 = NULL;
-	a->limiter = NULL;
-	a->cmd_nbr = 0;
+	a->limit = NULL;
+	a->cmd_n = 0;
 	a->index = 0;
 	a->fd1 = 0;
 	a->fd2 = 0;
@@ -31,7 +31,7 @@ void	ft_initialize_bn(t_args *a)
 
 }
 
-void	ft_heredoc_init(int argc,t_args *a, char **argv)
+void	ft_heredoc_init(int argc,t_arg *a, char **argv)
 {
 	int		i;
 	t_cmd	*aux_cmd;
@@ -44,7 +44,7 @@ void	ft_heredoc_init(int argc,t_args *a, char **argv)
 	ft_initialize_bn(a);
 	a->heredoc_flag = 1;
 	a->file1 = ".heredoc_tmp";
-	a->limiter = argv[i++];
+	a->limit = argv[i++];
 	while (i < argc - 1)
 	{
 		aux_cmd = ft_new_cmd(argv[i++]);
@@ -58,7 +58,7 @@ void	ft_heredoc_init(int argc,t_args *a, char **argv)
 	a->cmd = f;
 }
 
-void	ft_heredoc(t_args *a, char **argv, int argc)
+void	ft_heredoc(t_arg *a, char **argv, int argc)
 {
 	int		fd;
 	char	*b;
@@ -71,8 +71,8 @@ void	ft_heredoc(t_args *a, char **argv, int argc)
 	{
 		ft_printf("heredoc> ");
 		b = get_next_line(STDIN_FILENO);
-		if (!ft_strncmp(a->limiter, b, ft_strlen(a->limiter))
-			&& ft_strlen(b) - 1 == ft_strlen(a->limiter))
+		if (!ft_strncmp(a->limit, b, ft_strlen(a->limit))
+			&& ft_strlen(b) - 1 == ft_strlen(a->limit))
 			break ;
 		write(fd, b, ft_strlen(b));
 		free(b);
