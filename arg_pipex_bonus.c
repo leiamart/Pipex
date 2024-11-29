@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:44:58 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/28 21:17:30 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:15:08 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	ft_error_arg_b(t_arg *a, t_list *aux)
 {
-if (a->heredoc_flag == 1)
+if (a->heredocflag == 1)
 		unlink(".heredoc_tmp");
 	free(aux);
-	ft_printf("Command not found\n");
+	ft_printf_b("Command not found\n");
 	ft_free_arg_bonus(a);
 	exit(127);
 }
 
-char	*ft_cmd_bonus(char *e, char *c)
+char	*ft_cmd_bonus(char *c, char *e)
 {
 	char	**d;
 	char	*str;
@@ -62,10 +62,10 @@ void	ft_files_bonus(t_arg *a)
 	}
 }
 
-void	ft_start_arg(t_arg *a, int argc, char **argv)
+void	ft_start_arg(t_arg *a, char **argv, int argc)
 {
 	int		i;
-	t_cmd	*aux_cmd;
+	t_command	*aux_cmd;
 	t_list	*aux;
 	t_list	*f;
 

@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:08:04 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/28 22:42:35 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:25:10 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	ft_pipex_b(t_arg *a, char **e)
 	int	pfd[2];
 	pid_t p;
 
-	f (p(pfd) == -1)
+	if (pipe(pfd) == -1)
 		ft__error_bonus(a, "pipe");
 	if (dup2(a->fd1, STDIN_FILENO) == -1)
-		ft__error_bonus(a, "dup2");
+		ft_error_bonus(a, "dup2");
 	ft_child_cmd_bonus(a, pfd, e);
 	if (dup2(a->fd2, STDOUT_FILENO) == -1)
 		ft_error_bonus(a, "dup2");
@@ -71,7 +71,7 @@ t_arg	*ft_start(t_arg *a, char **argv, int argc, char **e)
 	}
 	else
 	{
-		ft_srtarted_arg(a, argv, argc);
+		ft_star_arg(a, argv, argc);
 		*a = ft_args_b(a, e);
 		ft_infile_b(a);
 		ft_outfile_b(a);
@@ -121,7 +121,7 @@ int	main(int argc, char **argv, char **e)
 			ft_pipex_bonus(a, argc, e);
 		if (ft_strcmp(argv[1], "here_doc") == 0)
 			unlink(".heredoc_tmp");
-		ft_arg_bonus(a);
+		ft_free_arg_bonus(a);
 	}
 	else
 	{

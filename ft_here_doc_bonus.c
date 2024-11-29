@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:03:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/28 22:40:40 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/29 23:37:31 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ void	ft_initialize_bn(t_arg *a)
 	a->index = 0;
 	a->fd1 = 0;
 	a->fd2 = 0;
-	a->heredoc_flag = 0;
+	a->heredocflag = 0;
 
 }
 
-void	ft_heredoc_init(int argc,t_arg *a, char **argv)
+void	ft_heredoc_init(t_arg *a, char **argv, int argc)
 {
 	int		i;
-	t_cmd	*aux_cmd;
+	t_command	*aux_cmd;
 	t_list	*aux;
 	t_list	*f;
 
@@ -42,7 +42,7 @@ void	ft_heredoc_init(int argc,t_arg *a, char **argv)
 	aux = NULL;
 	f = NULL;
 	ft_initialize_bn(a);
-	a->heredoc_flag = 1;
+	a->heredocflag = 1;
 	a->file1 = ".heredoc_tmp";
 	a->limit = argv[i++];
 	while (i < argc - 1)
@@ -63,14 +63,14 @@ void	ft_heredoc(t_arg *a, char **argv, int argc)
 	int		fd;
 	char	*b;
 
-	ftheredoc_init(a, argv, argc);
+	ft_heredoc_init(a, argv, argc);
 	fd = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd < 0)
 		ft_error_bonus(a, "open");
 	while (1)
 	{
 		ft_printf("heredoc> ");
-		b = get_next_line(STDIN_FILENO);
+		b = get_next_line_p(STDIN_FILENO);
 		if (!ft_strncmp(a->limit, b, ft_strlen(a->limit))
 			&& ft_strlen(b) - 1 == ft_strlen(a->limit))
 			break ;

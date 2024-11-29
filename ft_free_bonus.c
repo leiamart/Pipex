@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:09:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/27 21:44:30 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:46:24 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	*ft_free_b(char **str, int c)
 void	*ft_free_arg_bonus(t_arg *a)
 {
 	int		i;
-	t_cmd	*aux;
+	t_command	*aux;
 
 	ft_clear_list(&a->cmd);
 	if (a->cmdpath)

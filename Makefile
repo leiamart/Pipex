@@ -6,7 +6,7 @@
 #    By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 13:17:26 by leiamart          #+#    #+#              #
-#    Updated: 2024/11/23 18:55:35 by leiamart         ###   ########.fr        #
+#    Updated: 2024/11/29 23:33:38 by leiamart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,11 @@ ft_fd_bonus.c\
 ft_free_bonus.c\
 ft_here_doc_bonus.c\
 utils_bonus.c\
+ft_split_b.c\
+get_next_line_utils_pipex_bonus.c\
+get_next_line_pipex_bonus.c\
 arg_pipex_bonus.c\
-pipex_utils_bonus.c\
+ft_utils_pipex_bonus.c\
 
 OBJECTS = $(SOURCES:.c=.o)
 
