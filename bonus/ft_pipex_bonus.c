@@ -6,19 +6,19 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:08:04 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 23:25:10 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:21:56 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_pipex_b(t_arg *a, char **e)
 {
-	int	pfd[2];
-	pid_t p;
+	int		pfd[2];
+	pid_t	p;
 
 	if (pipe(pfd) == -1)
-		ft__error_bonus(a, "pipe");
+		ft_error_bonus(a, "pipe");
 	if (dup2(a->fd1, STDIN_FILENO) == -1)
 		ft_error_bonus(a, "dup2");
 	ft_child_cmd_bonus(a, pfd, e);
@@ -71,7 +71,7 @@ t_arg	*ft_start(t_arg *a, char **argv, int argc, char **e)
 	}
 	else
 	{
-		ft_star_arg(a, argv, argc);
+		ft_start_arg(a, argv, argc);
 		*a = ft_args_b(a, e);
 		ft_infile_b(a);
 		ft_outfile_b(a);
@@ -82,12 +82,15 @@ t_arg	*ft_start(t_arg *a, char **argv, int argc, char **e)
 	return (a);
 }
 
-
-void	ft_pipex_bonus(t_args *a, int argc, char **e)
+void	ft_pipex_bonus(t_arg *a, int argc, char **e)
 {
-	int		i;
+	int				i;
+	t_command		*temp;
+	t_list			*temp2;
 
 	i = 2;
+	temp = a->command;
+	temp2 = a->cmd;
 	if (dup2(a->fd1, STDIN_FILENO) == -1)
 		ft_error_bonus(a, "dup2");
 	while (i < argc - 2)
@@ -103,6 +106,8 @@ void	ft_pipex_bonus(t_args *a, int argc, char **e)
 		i++;
 	}
 	ft_pipex_finish(a, e);
+	a->command = temp;
+	a->cmd = temp2;
 }
 
 int	main(int argc, char **argv, char **e)
@@ -125,7 +130,7 @@ int	main(int argc, char **argv, char **e)
 	}
 	else
 	{
-		ft_printf("Error: Few arguments passed\n");
+		ft_printf_b("Error: Few arguments passed\n");
 		exit(1);
 	}
 	return (0);

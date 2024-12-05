@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_utils.c                                      :+:      :+:    :+:   */
+/*   ft_utils_pipex_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 19:15:14 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/30 17:45:49 by leiamart         ###   ########.fr       */
+/*   Created: 2024/11/29 21:07:45 by leiamart          #+#    #+#             */
+/*   Updated: 2024/11/30 18:24:20 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0'))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
+
+size_t	ft_strlen_b(const char *s)
 {
 	size_t	i;
 
@@ -24,7 +38,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-size_t	ft_strlcat(char *dst, const char *src, size_t destsize)
+size_t	ft_strlcat_b(char *dst, const char *src, size_t destsize)
 {
 	size_t	lensrc;
 	size_t	lendst;
@@ -33,8 +47,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t destsize)
 
 	i = 0;
 	c = 0;
-	lendst = ft_strlen (dst);
-	lensrc = ft_strlen (src);
+	lendst = ft_strlen_b (dst);
+	lensrc = ft_strlen_b (src);
 	if (destsize > 0 && lendst < destsize - 1)
 	{
 		while (dst[i] != '\0')
@@ -51,7 +65,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t destsize)
 	return (lendst + lensrc);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_b(char const *s1, char const *s2)
 {
 	char	*j;
 	int		i;
@@ -59,7 +73,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	size = ft_strlen_b(s1) + ft_strlen_b(s2) + 1;
 	j = (char *)malloc(size);
 	if (!j)
 		return (NULL);
@@ -70,39 +84,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 	}
 	j[i] = '\0';
-	ft_strlcat(j, s2, size);
+	ft_strlcat_b(j, s2, size);
 	return (j);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	size_t	c;
-	char	*p;
-
-	i = 0;
-	c = 0;
-	if (start > ft_strlen(s))
-		len = 0;
-	else if (len > (ft_strlen(s) - start))
-		len = ft_strlen(s) - start;
-	p = malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (s[i])
-	{
-		if (i >= start && c < len)
-		{
-			p[c] = s[i];
-			c++;
-		}
-		i++;
-	}
-	p[c] = '\0';
-	return (p);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp_b(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

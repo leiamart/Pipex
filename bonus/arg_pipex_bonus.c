@@ -6,15 +6,15 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                               +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 21:44:58 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 23:15:08 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:57:07 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_error_arg_b(t_arg *a, t_list *aux)
 {
-if (a->heredocflag == 1)
+	if (a->heredocflag == 1)
 		unlink(".heredoc_tmp");
 	free(aux);
 	ft_printf_b("Command not found\n");
@@ -27,6 +27,7 @@ char	*ft_cmd_bonus(char *c, char *e)
 	char	**d;
 	char	*str;
 	int		i;
+
 	str = ft_substr_b(e, 5, ft_strlen_b(e));
 	d = ft_split_b(str, ':');
 	free(str);
@@ -50,13 +51,13 @@ void	ft_files_bonus(t_arg *a)
 {
 	if (access(a->file1, F_OK) != 0)
 	{
-		ft_printf("Infile not found\n");
+		ft_printf_b("Infile not found\n");
 		ft_free_arg_bonus(a);
 		exit(1);
 	}
 	if (access(a->file1, R_OK) != 0)
 	{
-		ft_printf("Infile permissions denied\n");
+		ft_printf_b("Infile permissions denied\n");
 		ft_free_arg_bonus(a);
 		exit(5);
 	}
@@ -64,10 +65,10 @@ void	ft_files_bonus(t_arg *a)
 
 void	ft_start_arg(t_arg *a, char **argv, int argc)
 {
-	int		i;
+	int			i;
 	t_command	*aux_cmd;
-	t_list	*aux;
-	t_list	*f;
+	t_list		*aux;
+	t_list		*f;
 
 	i = 1;
 	aux = NULL;
@@ -78,7 +79,7 @@ void	ft_start_arg(t_arg *a, char **argv, int argc)
 	{
 		aux_cmd = ft_new_cmd(argv[i++]);
 		ft_add_back(&a->command, aux_cmd);
-		aux = ft_lstnew(ft_strjoin("/", aux_cmd->cmd[0]));
+		aux = ft_lstnew(ft_strjoin_b("/", aux_cmd->cmd[0]));
 		if (!f)
 			f = aux;
 		ft_lstadd_back(&a->cmd, aux);
@@ -88,7 +89,7 @@ void	ft_start_arg(t_arg *a, char **argv, int argc)
 	a->cmd = f;
 }
 
-t_arg	check_args(t_arg *a, char **e)
+t_arg	ft_args_b(t_arg *a, char **e)
 {
 	t_list	*aux;
 	t_list	*f;

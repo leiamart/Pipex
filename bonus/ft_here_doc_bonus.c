@@ -6,11 +6,11 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:03:42 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 23:37:31 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:30:07 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_initialize_bn(t_arg *a)
 {
@@ -28,15 +28,14 @@ void	ft_initialize_bn(t_arg *a)
 	a->fd1 = 0;
 	a->fd2 = 0;
 	a->heredocflag = 0;
-
 }
 
 void	ft_heredoc_init(t_arg *a, char **argv, int argc)
 {
-	int		i;
+	int			i;
 	t_command	*aux_cmd;
-	t_list	*aux;
-	t_list	*f;
+	t_list		*aux;
+	t_list		*f;
 
 	i = 2;
 	aux = NULL;
@@ -49,7 +48,7 @@ void	ft_heredoc_init(t_arg *a, char **argv, int argc)
 	{
 		aux_cmd = ft_new_cmd(argv[i++]);
 		ft_add_back(&a->command, aux_cmd);
-		aux = ft_lstnew(ft_strjoin("/", aux_cmd->cmd[0]));
+		aux = ft_lstnew(ft_strjoin_b("/", aux_cmd->cmd[0]));
 		if (!f)
 			f = aux;
 		ft_lstadd_back(&a->cmd, aux);
@@ -69,12 +68,12 @@ void	ft_heredoc(t_arg *a, char **argv, int argc)
 		ft_error_bonus(a, "open");
 	while (1)
 	{
-		ft_printf("heredoc> ");
+		ft_printf_b("heredoc> ");
 		b = get_next_line_p(STDIN_FILENO);
-		if (!ft_strncmp(a->limit, b, ft_strlen(a->limit))
-			&& ft_strlen(b) - 1 == ft_strlen(a->limit))
+		if (!ft_strncmp_b(a->limit, b, ft_strlen_b(a->limit))
+			&& ft_strlen_b(b) - 1 == ft_strlen_b(a->limit))
 			break ;
-		write(fd, b, ft_strlen(b));
+		write(fd, b, ft_strlen_b(b));
 		free(b);
 	}
 	free(b);

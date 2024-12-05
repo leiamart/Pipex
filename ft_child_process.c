@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:05:09 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/23 16:02:40 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:29:13 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	ft_error(t_args *a, char *e)
 
 void	ft_child(t_args *a, int pfd[2], char **c)
 {
-	pid_t p;
-	p = fork();
+	pid_t	p;
 
-	if (p ==-1)
+	p = fork();
+	if (p == -1)
 		ft_error(a, "fork");
 	if (p == 0)
 	{

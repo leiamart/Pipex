@@ -6,7 +6,7 @@
 #    By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/23 13:17:26 by leiamart          #+#    #+#              #
-#    Updated: 2024/11/29 23:33:38 by leiamart         ###   ########.fr        #
+#    Updated: 2024/11/30 15:55:02 by leiamart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,21 @@ utils_pipex.c\
 pipex_utils.c\
 
 SOURCES_BONUS = \
-ft_child_bonus.c\
-ft_fd_bonus.c\
-ft_free_bonus.c\
-ft_here_doc_bonus.c\
-utils_bonus.c\
-ft_split_b.c\
-get_next_line_utils_pipex_bonus.c\
-get_next_line_pipex_bonus.c\
-arg_pipex_bonus.c\
-ft_utils_pipex_bonus.c\
+./bonus/ft_child_bonus.c\
+./bonus/ft_fd_bonus.c\
+./bonus/ft_free_bonus.c\
+./bonus/ft_here_doc_bonus.c\
+./bonus/ft_pipex_bonus.c\
+./bonus/utils_bonus.c\
+./bonus/ft_split_bonus.c\
+./bonus/get_next_line_utils_pipex_bonus.c\
+./bonus/get_next_line_pipex_bonus.c\
+./bonus/ft_printf_bonus.c\
+./bonus/ft_printf_u_bonus.c\
+./bonus/arg_pipex_bonus.c\
+./bonus/ft_utils_pipex_bonus.c\
+
+SOURCES_DIR_BONUS = ./bonus/
 
 OBJECTS = $(SOURCES:.c=.o)
 

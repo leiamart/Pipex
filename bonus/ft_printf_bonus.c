@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pintf_bonus.c                                   :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 23:44:40 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 23:45:41 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 13:18:06 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_convert_b(const char *c, va_list args, int i)
 {
@@ -18,19 +18,19 @@ int	ft_convert_b(const char *c, va_list args, int i)
 
 	a = 0;
 	if (c[i + 1] == 'c')
-		a = ft_putchar(va_arg(args, int));
+		a = ft_putchar_b(va_arg(args, int));
 	else if (c[i + 1] == 's')
-		a = ft_putstr(va_arg(args, char *));
+		a = ft_putstr_b(va_arg(args, char *));
 	else if (c[i + 1] == 'p')
-		a = ft_putvoid(va_arg(args, uintptr_t));
+		a = ft_putvoid_b(va_arg(args, uintptr_t));
 	else if (c[i + 1] == 'd' || c[i + 1] == 'i')
-		a = ft_putnbr(va_arg(args, int));
+		a = ft_putnbr_b(va_arg(args, int));
 	else if (c[i + 1] == 'u')
-		a = ft_putunbr(va_arg(args, unsigned int));
+		a = ft_putunbr_b(va_arg(args, unsigned int));
 	else if (c[i + 1] == 'x' || c[i + 1] == 'X')
-		a = ft_puthexa(va_arg(args, unsigned int), c[i + 1]);
+		a = ft_puthexa_b(va_arg(args, unsigned int), c[i + 1]);
 	else if (c[i + 1] == '%')
-		a = ft_putchar('%');
+		a = ft_putchar_b('%');
 	return (a);
 }
 
@@ -47,11 +47,11 @@ int	ft_printf_b(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			count = count + ft_convert(str, elements, i);
+			count = count + ft_convert_b(str, elements, i);
 			i++;
 		}
 		else
-			count += ft_putchar(str[i]);
+			count += ft_putchar_b(str[i]);
 		i++;
 	}
 	va_end (elements);
@@ -74,11 +74,11 @@ int	ft_puthexa_b(unsigned long long n, char c)
 
 	i = 0;
 	if (n >= 16)
-		i += ft_puthexa(n / 16, c);
+		i += ft_puthexa_b(n / 16, c);
 	if (c == 'x')
-		ft_putchar("0123456789abcdef"[n % 16]);
+		ft_putchar_b("0123456789abcdef"[n % 16]);
 	if (c == 'X')
-		ft_putchar("0123456789ABCDEF"[n % 16]);
+		ft_putchar_b("0123456789ABCDEF"[n % 16]);
 	i++;
 	return (i);
 }
@@ -100,12 +100,12 @@ int	ft_putnbr_b(int n)
 	if (a < 10)
 	{
 		b = a + 48;
-		i += ft_putchar(b);
+		i += ft_putchar_b(b);
 	}
 	else
 	{
-		i += ft_putnbr(a / 10);
-		i += ft_putnbr(a % 10);
+		i += ft_putnbr_b(a / 10);
+		i += ft_putnbr_b(a % 10);
 	}
 	return (i);
 }

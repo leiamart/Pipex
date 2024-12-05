@@ -6,11 +6,11 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:09:31 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 17:46:24 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:02:54 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	ft_clear_list(t_list **a)
 {
@@ -44,13 +44,13 @@ void	ft_path_free(t_arg *a)
 
 void	*ft_free_b(char **str, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < c)
 	{
-	free(str[i]);
-	i++;
+		free(str[i]);
+		i++;
 	}
 	free(str);
 	return (NULL);
@@ -58,7 +58,7 @@ void	*ft_free_b(char **str, int c)
 
 void	*ft_free_arg_bonus(t_arg *a)
 {
-	int		i;
+	int			i;
 	t_command	*aux;
 
 	ft_clear_list(&a->cmd);
@@ -74,6 +74,8 @@ void	*ft_free_arg_bonus(t_arg *a)
 		free(a->command);
 		a->command = aux;
 	}
-	free(a);
+	if (!a->firstcommand)
+		exit(1);
+	exit(0);
 	return (NULL);
 }

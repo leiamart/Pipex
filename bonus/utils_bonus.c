@@ -6,25 +6,25 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:08:46 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/29 23:40:14 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:22:59 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-void    ft_add_back(t_command **l, t_command *n)
+void	ft_add_back(t_command **l, t_command *n)
 {
-        t_command   *b;
+	t_command	*b;
 
-        b = *l;
-        if (!b)
-                *l = n;
-        else
-        {
-                while (b->next)
-                        b = b->next;
-                b->next = n;
-        }
+	b = *l;
+	if (!b)
+		*l = n;
+	else
+	{
+		while (b->next)
+			b = b->next;
+		b->next = n;
+	}
 }
 
 t_list	*ft_lstnew(void *content)
@@ -61,7 +61,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 	else
 	{
-	last = ft_lstlast(*lst);
-	last->next = new;
+		last = ft_lstlast(*lst);
+		last->next = new;
 	}
 }
