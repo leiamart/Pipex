@@ -6,7 +6,7 @@
 /*   By: leiamart <leiamart@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 13:38:02 by leiamart          #+#    #+#             */
-/*   Updated: 2024/11/16 13:38:24 by leiamart         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:49:08 by leiamart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 static size_t	ft_countwords(const char *s, const char c)
 {
 	size_t	i;
-	size_t	j;
+	size_t	n;
 
 	i = 0;
-	j = 0;
+	n = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i++] != c && (s[i] == c || s[i] == '\0'))
-			j++;
+			n++;
 	}
-	return (j);
+	return (n);
 }
 
 static char	**free_all(char **str, int n)
